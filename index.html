@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FD Labsheet1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="theme-switch">
+        <label for="theme" class="theme">
+            <span class="theme__toggle-wrap">
+                <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme">
+                <span class="theme__fill"></span>
+                <span class="theme__icon">
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                    <span class="theme__icon-part"></span>
+                </span>
+            </span>
+        </label>
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="HyraSongs.png" alt="Card Image">
+            <div class="card-content">
+                <h2 class="card-title">HyraSongs Logo</h2>
+                <p class="card-description">This is the logo of Hyra songs, designed by Madhav A Das.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const themeToggle = document.getElementById("theme");
+            const rootElement = document.documentElement;
+    
+            // Check localStorage for saved theme preference
+            const savedTheme = localStorage.getItem("theme");
+    
+            if (savedTheme === "dark") {
+                rootElement.setAttribute("data-theme", "dark");
+                themeToggle.checked = true;
+            } else {
+                rootElement.setAttribute("data-theme", "light");
+                themeToggle.checked = false;
+            }
+    
+            // Toggle theme on click (only when explicitly clicked)
+            themeToggle.addEventListener("click", function (event) {
+                event.stopPropagation(); // Prevents accidental toggling from external clicks
+                
+                if (themeToggle.checked) {
+                    rootElement.setAttribute("data-theme", "dark");
+                    localStorage.setItem("theme", "dark");
+                } else {
+                    rootElement.setAttribute("data-theme", "light");
+                    localStorage.setItem("theme", "light");
+                }
+            });
+        });
+    </script>
+    
+    
+    
+</body>
+</html>
